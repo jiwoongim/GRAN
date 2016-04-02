@@ -158,30 +158,6 @@ class Optimize():
     
     
 
-    def clip_gradient(self, params, gparams, scalar=5, check_nanF=True):
-        """
-            Sequence to sequence
-        """
-        num_params = len(gparams)
-        g_norm = 0.
-        for i in xrange(num_params):
-            gparam = gparams[i]
-            g_norm += (gparam**2).sum()
-        if check_nanF:
-            not_finite = T.or_(T.isnan(g_norm), T.isinf(g_norm))
-        g_norm = T.sqrt(g_norm)
-        scalar = scalar / T.maximum(scalar, g_norm)
-        if check_nanF:
-            for i in xrange(num_params):
-                param = params[i]
-                gparams[i] = T.switch(not_finite, 0.1 * param, gparams[i] * scalar)
-        else:
-            for i in xrange(num_params):
-                gparams[i]  = gparams[i] * scalar
-
-        return gparams
-
-
     def get_samples(self, model):
 
         num_sam = T.iscalar('i'); 
