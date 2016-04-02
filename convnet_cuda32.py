@@ -31,6 +31,7 @@ from utils import *
 class convnet32():
 
     def __init__(self, model_params, nkerns=[1,8,4,2], ckern=128, filter_sizes=[5,5,5,5,4]):
+        """Initializes the architecture of the discriminator"""
 
         self.num_hid, num_dims, num_class, self.batch_size, self.num_channels = model_params
         self.D      = int(np.sqrt(num_dims / self.num_channels))
@@ -54,7 +55,7 @@ class convnet32():
 
 
     def propagate(self, X, num_train=None, atype='relu'):
-
+        """Propagate, return binary output of fake/real image"""     
         image_shape0=[X.shape[0], self.num_channels, self.D, self.D]
         ConX = X.reshape(image_shape0)
         H0 = self.L1.conv(ConX, atype=atype)
@@ -83,6 +84,7 @@ class convnet32():
 
 
     def errors(self, X, y, num_train=None):
+        """error computed during battle metric"""
 
         p_y_x   = self.propagate(X, num_train=num_train).flatten()
         pred_y  = p_y_x  > 0.5

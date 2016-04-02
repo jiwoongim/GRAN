@@ -30,6 +30,7 @@ from recGenI128 import *
 class GRAN():
 
     def __init__(self, model_params):
+        """Initializes discriminator and generator for 64x64/128x128/MNIST"""
     
         gen_params, disc_params = model_params
         self.num_steps          = gen_params[-1]
@@ -55,6 +56,7 @@ class GRAN():
 
 
     def cost_dis(self, X, num_examples):
+        """compute cost of the discriminator"""
 
         target1  = T.alloc(1., num_examples)
         p_y__x1  = self.dis_network.propagate(X).flatten()
@@ -67,6 +69,7 @@ class GRAN():
                         + T.mean(T.nnet.binary_crossentropy(p_y__x0, target0))
 
     def cost_gen(self, num_examples):
+        """compute cost of the generator"""
 
         target      = T.alloc(1., num_examples)
         gen_samples = self.gen_network.get_samples(num_examples)[0]
@@ -76,6 +79,7 @@ class GRAN():
 
     
     def sequential_drawing(self, num_examples):
+        """Fetches the sequential output of GRAN at each timestep"""
         
         canvas = self.gen_network.get_samples(num_examples)[1]
         sequential_sams = []
@@ -86,6 +90,7 @@ class GRAN():
 
  
     def get_samples(self, num_sam):
+        """Fetches the generated samples"""
 
         #Returns tensor (num_sam, 3, D, D)
         return self.gen_network.get_samples(num_sam)[0]

@@ -33,6 +33,9 @@ def conv_cond_concat(x, y):
 
 
 def init_conv_weights(W_low, W_high, filter_shape, numpy_rng, rng_dist='normal'):
+    """
+    initializes the convnet weights.
+    """
 
     if 'uniform' in rng_dist:
         return np.asarray(
@@ -43,6 +46,8 @@ def init_conv_weights(W_low, W_high, filter_shape, numpy_rng, rng_dist='normal')
 
 
 def initialize_weight(n_vis, n_hid, W_name, numpy_rng, rng_dist):
+    """
+    """
 
     if 'uniform' in rng_dist:
         W = numpy_rng.uniform(low=-np.sqrt(6. / (n_vis + n_hid)),\
@@ -111,6 +116,7 @@ def repmat_tensor(x,k):
 
 
 def activation_fn_th(X,atype='sigmoid', leak_thrd=0.2):
+    '''collection of useful activation functions'''
 
     if atype == 'softmax':
         return T.nnet.softmax(X)
@@ -131,6 +137,7 @@ def activation_fn_th(X,atype='sigmoid', leak_thrd=0.2):
 
 
 def save_the_weight(x,fname):
+    '''save pickled weights'''
     f = file(fname+'.save', 'wb')
     cPickle.dump(x, f, protocol=cPickle.HIGHEST_PROTOCOL)
     f.close()
@@ -170,13 +177,6 @@ def display_dataset(data, patch_sz, tile_shape, scale_rows_to_unit_interval=Fals
         plt.imshow(x,cmap='gray')
         plt.axis('off')
         plt.show(block=True)
-        #image = PIL.Image.fromarray(numpy.uint8(x))#.convert('RGB')
-        #image.show()
-
-    # For CIFAR10 images
-    #plt.imshow(x)
-    #image = PIL.Image.fromarray(x).convert('RGB')
-    #image.show()
         
 
 def scale_to_unit_interval(ndar, eps=1e-8):
@@ -312,12 +312,9 @@ being plotted to [0,1] or not
                         ] = this_img * c
         return out_array
 
-def save_the_weight(x,fname):
-    f = file(fname+'.save', 'wb')
-    cPickle.dump(x, f, protocol=cPickle.HIGHEST_PROTOCOL)
-    f.close()
 
 def get_corrupted_input(rng, input, corruption_level, ntype='zeromask'):
+    ''' depending on requirement, returns input corrupted by zeromask/gaussian/salt&pepper'''
     MRG = RNG_MRG.MRG_RandomStreams(rng.randint(2 ** 30))
     #theano_rng = RandomStreams()
     if corruption_level == 0.0:

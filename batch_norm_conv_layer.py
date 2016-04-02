@@ -31,6 +31,7 @@ class BN_Conv_layer(object):
     
     def __init__ (self, batch_sz, numpy_rng, tnkern=5, \
                     bfilter_sz=5, tfilter_sz=5, bnkern=1, poolsize=(2,2)):
+        """Parameter Initialization for Batch Norm"""
 
         self.filter_shape   =(tnkern, bnkern, tfilter_sz, tfilter_sz) #TODO 
 
@@ -67,6 +68,7 @@ class BN_Conv_layer(object):
 
 
     def collect_statistics(self, X):
+        """Updates Statistics of data"""
         stat_mean = T.mean(X, axis=0)
         stat_std  = T.std(X, axis=0)
 
