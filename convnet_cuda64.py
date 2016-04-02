@@ -32,6 +32,7 @@ from utils import *
 class convnet64():
 
     def __init__ (self, model_params, nkerns=[1,8,4,2,1], ckern=172, filter_sizes=[5,5,5,5,4]):
+        """Initializes the architecture of the discriminator"""
 
         self.num_hid, num_dims, num_class, self.batch_size, self.num_channels = model_params
         self.D =  int(np.sqrt(num_dims / self.num_channels))
@@ -57,7 +58,7 @@ class convnet64():
                 + self.L1.params + self.L2.params + self.L3.params + self.L4.params 
 
     def propagate(self, X, num_train=None, atype='relu'):
-                
+        """Propagate, return binary output of fake/real image"""     
         image_shape0=[X.shape[0], self.num_channels, self.D, self.D]
         ConX = X.reshape(image_shape0)
         H0 = self.L1.conv(ConX, atype=atype)

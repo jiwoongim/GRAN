@@ -10,9 +10,6 @@
  not been tested to the degree that would be advisable in any important
  application.  All use of these programs is entirely at the user's own risk.'''
 
-
-
-
 import os, sys, math
 import numpy as np
 import pylab as pl
@@ -30,6 +27,7 @@ from PIL import Image
 
 
 def load_cifar10(path=cifar10_path):
+    '''processes the raw downloaded cifar10 dataset, and returns test/val/train set'''
 
     data_batch1 = unpickle(path+'data_batch_1')
     data_batch2 = unpickle(path+'data_batch_2')
@@ -93,15 +91,14 @@ def display_images(images, tile_shape=(10,10), img_shape=(32,32), fname=None):
 
 
 def display_cifar10(data_batch):
-
-
+    '''get samples for cifar10 original'''
     N = data_batch['data'].shape[1]
     input = data_batch['data'][0:100,:]
     display_images(input, tile_shape=(10,10), fname='./cifar10.png')
 
 
 def display_cifar10_grey(data_batch):
-
+    '''return grey scale samples for cifar10'''
     N = data_batch['data'].shape[1]
     input = data_batch['data'][0:100,:]
     input = (input[:, 0:1024],input[:, 1024:2048],input[:, 2048:3072], None)

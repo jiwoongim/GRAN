@@ -36,7 +36,6 @@ class Conv_layer(object):
 
 
     def init_conv_filters(self, numpy_rng, D, poolsize):
-
         ''' Convolutional Filters '''
         # there are "num input feature maps * filter height * filter width"
         # inputs to each hidden unit

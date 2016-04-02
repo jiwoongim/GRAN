@@ -30,6 +30,7 @@ TINY    = 1e-6
 class Batch_Norm_layer(object):
 
     def __init__(self, D, M, name, numpy_rng):
+        """Parameter Initialization for Batch Norm"""
         self.W       = initialize_weight(D, M,  name, numpy_rng, 'uniform') 
         self.zbias       = theano.shared(np.zeros((M,), dtype=theano.config.floatX), name='zbias')
         self.eta         = theano.shared(np.ones((M,), dtype=theano.config.floatX), name='eta') 
@@ -70,7 +71,4 @@ class Batch_Norm_layer(object):
             Z       = (Z - mean) / (std + TINY)
 
         return Z
-
-
-
 

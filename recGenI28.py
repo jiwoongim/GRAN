@@ -37,7 +37,7 @@ MRG = RNG_MRG.MRG_RandomStreams(rng.randint(2 ** 30))
 class RecGenI28(object):
 
     def __init__(self, model_params, nkerns=[8,4,1], ckern=32, filter_sizes=[7,5,5]):
-
+        """Initialize the architecture of the model"""
         [self.batch_sz, num_dims, self.num_hids, numpy_rng,\
                 self.dim_sample, nkerns, ckern, self.num_channels, self.num_steps]  = model_params 
         self.nkerns     = np.asarray(nkerns) * ckern # of constant gen filters in first conv layer
@@ -62,6 +62,7 @@ class RecGenI28(object):
 
 
     def init_params(self, numpy_rng):
+        '''initialize the weights and biases to be used throughout the model'''
 
         self.W_z_f     = initialize_weight(self.num_hids[0], self.dim_sample, 'W_z_f', numpy_rng, 'uniform')
         self.z_f_bias  = theano.shared(np.zeros((self.dim_sample,), dtype=theano.config.floatX), name='z_f_bias')
@@ -118,7 +119,12 @@ class RecGenI28(object):
 
 
     def apply_recurrence(self, num_steps, Zs, H_Ct, scanF=True):
-
+        """ 
+        Applies the recurrent architecture of Model described in GRAN paper, to recursively 
+        input previous step's encoded Canvas(H_Ct) with random noise(Z), and receive the 
+        encoded H_Ct for the current time step
+        It returns the final output Canvas, C.
+        """
         def recurrence(i, H_Ct, Zs):
 
             Z    = Zs[0]
@@ -137,6 +143,7 @@ class RecGenI28(object):
 
 
     def weight_decay(self):
+        """l2 weight decay used in the optimize_gan for computing the cost of the discriminator"""
         return 0.5*((self.L2.W **2).sum() \
                                     + (self.L3.W**2).sum() + (self.L4.W**2).sum())
 
