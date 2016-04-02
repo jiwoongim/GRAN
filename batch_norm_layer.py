@@ -41,6 +41,7 @@ class Batch_Norm_layer(object):
         self.params = [self.W, self.zbias, self.eta, self.beta]
 
     def collect_statistics(self, X):
+        """ updates statistics on data"""
         stat_mean = T.mean(X, axis=0)
         stat_std  = T.std(X, axis=0)
 

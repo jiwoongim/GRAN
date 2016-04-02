@@ -94,9 +94,12 @@ class Optimize():
 
 
 
-    # optimizer for hkl packaged dataset. Returns the updates for discirminator & generator and computed costs for the model.
     def optimize_gan_hkl(self, model, lam1=0.00001):
- 
+        """
+        optimizer for hkl packaged dataset. 
+        Returns the updates for discirminator & generator and computed costs for the model.
+        """
+
         i = T.iscalar('i'); 
         lr = T.fscalar('lr');
         Xu = T.fmatrix('X'); 
@@ -126,9 +129,12 @@ class Optimize():
         return discriminator_update, generator_update, get_valid_cost, get_test_cost
 
 
-    # optimizer for non packaged dataset, returning updates for discriminator & generator, as well as the computed costs.
     def optimize_gan(self, model, train_set, valid_set, test_set, lam1=0.00001):
- 
+        """
+        optimizer for non packaged dataset, 
+        returning updates for discriminator & generator, as well as the computed costs.
+        """
+
         i = T.iscalar('i'); lr = T.fscalar('lr');
         Xu = T.matrix('X'); 
         cost_disc   = model.cost_dis(Xu, self.batch_sz) \

@@ -68,6 +68,7 @@ class BN_Conv_layer(object):
 
 
     def collect_statistics(self, X):
+        """Updates Statistics of data"""
         stat_mean = T.mean(X, axis=0)
         stat_std  = T.std(X, axis=0)
 
