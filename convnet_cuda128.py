@@ -91,7 +91,7 @@ class convnet128():
 
 
     def errors(self, X, y, num_train=None):
-
+        """error computed during battle metric"""
         p_y_x   = self.propagate(X, num_train=num_train).flatten()
         pred_y  = p_y_x  > 0.5
         return T.mean(T.neq(pred_y, y))
