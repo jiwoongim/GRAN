@@ -1,3 +1,20 @@
+''' Version 1.000
+ Code provided by Daniel Jiwoong Im and Chris Dongjoo Kim
+ Permission is granted for anyone to copy, use, modify, or distribute this
+ program and accompanying programs and documents for any purpose, provided
+ this copyright notice is retained and prominently displayed, along with
+ a note saying that the original programs are available from our
+ web page.
+ The programs and documents are distributed without any warranty, express or
+ implied.  As the programs were written for research purposes only, they have
+ not been tested to the degree that would be advisable in any important
+ application.  All use of these programs is entirely at the user's own risk.'''
+
+'''Demo of Generating images with recurrent adversarial networks.
+For more information, see: http://arxiv.org/abs/1602.05110
+'''
+
+
 import time, timeit
 import hickle as hkl
 import theano 
@@ -57,7 +74,6 @@ def load_model(filename, model_name):
             model = unpickle(os.path.dirname(os.path.realpath(__file__)) + '/params/'+'recgan_num_hid100.batch100.eps_dis0.0001.eps_gen0.0002.num_z100.num_epoch15.lam1e-06.ts3.ckern128.data.10_lsun_get_eps(70).hbias_rem.z=zs[0]10.save')
         elif(filename == 'MNIST'): 
             model = unpickle(os.path.dirname(os.path.realpath(__file__)) + '/params/'+'gran_param_cifar10_ts5_2.save')
-        #model = unpickle(os.path.dirname(os.path.realpath(__file__)) + '/params/'+'recgan_gran_param_cifar10_ts3.save3.save')
     else:
         model = unpickle(os.path.dirname(os.path.realpath(__file__)) + '/params/'+model_name)
 
