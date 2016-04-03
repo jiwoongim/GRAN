@@ -45,6 +45,7 @@ Here are some CIFAR10 samples generated from GRAN:
 
 ![Image of cifar10](https://github.com/jiwoongim/GRAN/blob/master/figs/cifar10/cifar10_granI_samples2.jpeg)
 
+![Image of lsun](https://github.com/jiwoongim/GRAN/blob/master/figs/lsun/lsun_ts3.jpg)
 
-
+![Image of lsun](https://github.com/jiwoongim/GRAN/blob/master/figs/lsun/lsun_ts5.jpg)
 
