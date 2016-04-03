@@ -1,12 +1,28 @@
+''' Version 1.000
+ Code provided by Daniel Jiwoong Im and Chris Dongjoo Kim
+ Permission is granted for anyone to copy, use, modify, or distribute this
+ program and accompanying programs and documents for any purpose, provided
+ this copyright notice is retained and prominently displayed, along with
+ a note saying that the original programs are available from our
+ web page.
+ The programs and documents are distributed without any warranty, express or
+ implied.  As the programs were written for research purposes only, they have
+ not been tested to the degree that would be advisable in any important
+ application.  All use of these programs is entirely at the user's own risk.'''
+
+'''Demo of Generating images with recurrent adversarial networks.
+For more information, see: http://arxiv.org/abs/1602.05110
+'''
+
+
 import theano 
 import numpy as np
 import scipy as sp
-from convnet_cuda import *
+from convnet_cuda32 import *
 from convnet_cuda28 import *
 from convnet_cuda64 import *
 
 from batch_norm_conv_layer import *
-#from convnet import *
 from recGenI import *
 from recGenI28 import *
 from recGenI64 import *
@@ -25,8 +41,8 @@ class RecGanI():
             self.gen_network = RecGenI64(gen_params)
         else:
             # cifar10 would fall here.
-            self.dis_network = convnet(disc_params) 
-            self.gen_network = RecGenI(gen_params)
+            self.dis_network = convnet32(disc_params) 
+            self.gen_network = RecGenI32(gen_params)
         self.params = self.dis_network.params + self.gen_network.params
         #self.params = OrderedDict()
         #for param in params:
