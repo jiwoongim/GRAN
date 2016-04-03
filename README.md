@@ -41,9 +41,9 @@ Entry code for CIFAR10 and LSUN Church are
 
 Here are some CIFAR10 samples generated from GRAN:
 
-![Image of cifar10](https://github.com/jiwoongim/GRAN/blob/master/figs/cifar10/cifar10_granI_samples.pdf)
+![Image of cifar10](https://github.com/jiwoongim/GRAN/blob/master/figs/cifar10/cifar10_granI_samples.jpeg)
 
-![Image of cifar10](https://github.com/jiwoongim/GRAN/blob/master/figs/cifar10/cifar10_granI_samples2.pdf)
+![Image of cifar10](https://github.com/jiwoongim/GRAN/blob/master/figs/cifar10/cifar10_granI_samples2.jpeg)
 
 
 
