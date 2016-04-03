@@ -14,7 +14,7 @@
 For more information, see: http://arxiv.org/abs/1602.05110
 '''
 
-
+'''This is same script as GRAN.py; Duplicate for now.. '''
 import theano 
 import numpy as np
 import scipy as sp
@@ -23,7 +23,7 @@ from convnet_cuda28 import *
 from convnet_cuda64 import *
 
 from batch_norm_conv_layer import *
-from recGenI import *
+from recGenI32 import *
 from recGenI28 import *
 from recGenI64 import *
 
@@ -44,9 +44,6 @@ class RecGanI():
             self.dis_network = convnet32(disc_params) 
             self.gen_network = RecGenI32(gen_params)
         self.params = self.dis_network.params + self.gen_network.params
-        #self.params = OrderedDict()
-        #for param in params:
-        #    self.params[param.name] = param
 
 
     def cost_dis(self, X, num_examples):
@@ -79,7 +76,6 @@ class RecGanI():
             sequential_sams.append(T.nnet.sigmoid(T.sum(T.stacklists(canvas[:i+1]), axis=0)))
        
         return T.stacklists(sequential_sams)
-
 
     
     def get_samples(self, num_sam):
