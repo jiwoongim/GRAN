@@ -107,6 +107,7 @@ class RecGenI(object):
         """
         print 'Get_sample func: Number of steps iterate over ::: %d' % self.num_steps
 
+        
         H_Ct    = T.alloc(0., num_sam, self.dim_sample)
         #Z       = MRG.normal(size=(num_sam, self.dim_sample), avg=0., std=1.)
         Zs      = MRG.normal(size=(self.num_steps, num_sam, self.dim_sample), avg=0., std=1.)

@@ -18,8 +18,6 @@ from utils import *
 from util_cifar10 import *
 
 
-#datapath='/export/mlrg/imj/machine_learning/data/cifar10/cifar-10-batches-py/'
-# datapath='/data/lisa/data/cifar10/cifar-10-batches-py/'
 cifar10_datapath='/eecs/research/asr/chris/DG_project/dataset/cifar-10-batches-py/'
 lsun_datapath='/local/scratch/chris/church/preprocessed_toy_10/'
 mnist_datapath = '/data/mnist/'
@@ -55,13 +53,16 @@ def load_model(filename, model_name):
             model = unpickle(os.path.dirname(os.path.realpath(__file__)) + '/params/'+'recgan_num_hid100.batch100.eps_dis0.0001.eps_gen0.0002.num_z100.num_epoch15.lam1e-06.ts3.ckern128.data.10_lsun_get_eps(70).hbias_rem.z=zs[0]10.save')
         elif(filename == 'LSUN'):
             model = unpickle(os.path.dirname(os.path.realpath(__file__)) + '/params/'+'recgan_num_hid100.batch100.eps_dis0.0001.eps_gen0.0002.num_z100.num_epoch15.lam1e-06.ts3.ckern128.data.10_lsun_get_eps(70).hbias_rem.z=zs[0]10.save')
+            save_the_weight(model.params, './params/lsun_ts3')
+            exit()
+ 
         elif(filename == 'MNIST'): 
             model = unpickle(os.path.dirname(os.path.realpath(__file__)) + '/params/'+'gran_param_cifar10_ts5_2.save')
         #model = unpickle(os.path.dirname(os.path.realpath(__file__)) + '/params/'+'recgan_gran_param_cifar10_ts3.save3.save')
     else:
         model = unpickle(os.path.dirname(os.path.realpath(__file__)) + '/params/'+model_name)
 
-    return model 
+    return model
 
 
 def set_up_train(model, opt_params):
@@ -181,7 +182,7 @@ if __name__ == '__main__':
         a,b,c,d = train_data.shape
         train_data = train_data.reshape(a,b*c*d)
         train_set = [train_data, np.zeros((a,))]
-        print (train_filenames)
+        # print (train_filenames)
         
         train_data_cllct = train_data; 
         # for purposes of setting up model.
