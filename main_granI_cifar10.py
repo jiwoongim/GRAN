@@ -98,14 +98,14 @@ def lets_train(model, train_params, num_batchs, theano_fns, opt_params, model_pa
 
             num_samples=100
             samples = get_samples(num_samples).reshape((num_samples, 32*32*3))
-            display_images(np.asarray(samples * 255, dtype='int32'), (10,10), fname='./figs/cifar10/RG1/granI_samples_'+str(epoch) +"_"+ str(K))
+            display_images(np.asarray(samples * 255, dtype='int32'), (10,10), fname='./figs/cifar10/granI_samples_'+str(epoch) +"_"+ str(K))
 
             # change the name to save to when new model is found.
             save_the_weight(model, './params/'+ model_param_save )
             
     num_samples=100
     samples = get_samples(num_samples).reshape((num_samples, 3*32*32))
-    display_images(np.asarray(samples * 255, dtype='int32'), (10,10), fname='./figs/cifar10/RG1/gran_samples_'+ '_'+ findex + str(K))
+    display_images(np.asarray(samples * 255, dtype='int32'), (10,10), fname='./figs/cifar10/gran_samples_'+ '_'+ findex + str(K))
 
     return model
 
