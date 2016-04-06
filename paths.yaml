@@ -1,0 +1,12 @@
+train_img_dir: 'conference_room/train128x128'
+val_img_dir: 'conference_room/val128x128'
+test_img_dir: 'conference_room/test128x128'
+
+# output dir.
+tar_root_dir: 'conference_room/preprocessed_10'  # dir to store all the preprocessed files
+tar_train_dir: 'conference_room/preprocessed_10/train_hkl'  # dir to store training batches
+tar_val_dir: 'conference_room/preprocessed_10/val_hkl'  # dir to store validation batches
+tar_test_dir: 'conference_room/preprocessed_10/test_hkl'
+misc_dir: 'conference_room/preprocessed_10/misc'  
+# dir to store img_mean.npy, shuffled_train_filenames.npy, train.txt, val.txt 
+

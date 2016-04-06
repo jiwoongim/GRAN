@@ -32,6 +32,18 @@ Packages
 * [numpy](http://www.numpy.org/)
 * [Theano ('0.7.0.dev-725b7a3f34dd582f9aa2071a5b6caedb3091e782')](http://deeplearning.net/software/theano/) 
 
+## How to set-up LSUN dataset
+1. Obtain the LSUN dataset from [fyu's repository](https://github.com/fyu/lsun)
+2. Resize the image to 64x64 or 128x128.
+3. Split the dataset to train/val/test set.
+4. Update the paths in provided paths.yaml, and run the script 
+```
+python to_hkl.py <toy/full>
+```
+5. Link it to the inquire/main file, e.g.
+```
+lsun_datapath='/local/scratch/chris/church/preprocessed_toy_10/'
+``` 
 
 ## How to run
 Entry code for CIFAR10 and LSUN Church are 
