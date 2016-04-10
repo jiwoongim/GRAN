@@ -53,7 +53,10 @@ Entry code for CIFAR10 and LSUN Church are
 ## How to obtain samples with pretrained models
 First download the pretrained model from this [Dropbox Link](https://www.dropbox.com/sh/1jek1alxyjhcnjh/AADOWgtWOWF-LYEuMekxe2yWa?dl=0), save it to a local folder, and supply the path when prompted.
 ```
-    python inquire_samples.py
+    python inquire_samples.py # to attain Nearest Neighbour and Sequential Samples
+
+    python main_granI_lsun.py # to attain 100 samples from the pretrained model.
+
 ```
 
 Here are some CIFAR10 samples generated from GRAN:
