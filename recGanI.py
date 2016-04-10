@@ -48,7 +48,6 @@ class RecGanI():
 
     def cost_dis(self, X, num_examples):
 
-        print("in cost_dis");
         target1  = T.alloc(1., num_examples)
         p_y__x1  = self.dis_network.propagate(X).flatten()
 

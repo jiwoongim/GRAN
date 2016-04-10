@@ -40,7 +40,7 @@ Packages
 ```
 python to_hkl.py <toy/full>
 ```
-5. Link it to the inquire/main file, e.g.
+Link it to the inquire/main file, e.g.
 ```
 lsun_datapath='/local/scratch/chris/church/preprocessed_toy_10/'
 ``` 
@@ -49,6 +49,11 @@ lsun_datapath='/local/scratch/chris/church/preprocessed_toy_10/'
 Entry code for CIFAR10 and LSUN Church are 
 ```
     - ./main_granI_cifar10.py
+```
+## How to obtain samples with pretrained models
+First download the pretrained model from this [Dropbox Link](https://www.dropbox.com/sh/1jek1alxyjhcnjh/AADOWgtWOWF-LYEuMekxe2yWa?dl=0), save it to a local folder, and supply the path when prompted.
+```
+    python inquire_samples.py
 ```
 
 Here are some CIFAR10 samples generated from GRAN:

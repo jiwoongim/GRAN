@@ -140,6 +140,7 @@ def save_the_weight(x,fname):
     '''save pickled weights'''
     f = file(fname+'.save', 'wb')
     cPickle.dump(x, f, protocol=cPickle.HIGHEST_PROTOCOL)
+    print("saved!")
     f.close()
 
 
