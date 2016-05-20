@@ -39,10 +39,10 @@ class GRAN():
             self.dis_network = convnet28(disc_params) 
             self.gen_network = RecGenI28(gen_params)
         elif gen_params[1] == 64*64*3:
-            self.dis_network = convnet64(disc_params, ckern=128*3, nkerns=[1,8,4,2,1]) 
+            self.dis_network = convnet64(disc_params) 
             self.gen_network = RecGenI64(gen_params)
         elif gen_params[1] == 128*128*3:
-            self.dis_network = convnet128(disc_params, ckern=128, nkerns=[1,1,1,2,4,8]) 
+            self.dis_network = convnet128(disc_params) 
             self.gen_network = RecGenI128(gen_params)
         else:   
             ##32x32x3, i.e., CIFAR10 would fall here

@@ -32,7 +32,8 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 from optimize_gan import *
-from recGanI import *
+# from recGanI import *
+from gran import *
 from deconv import *
 from utils import * 
 from util_cifar10 import * 
@@ -45,8 +46,8 @@ if debug:
     
 #datapath='/export/mlrg/imj/machine_learning/data/lsun/cifar-10-batches-py/'
 #datapath='/u/imdaniel/Documents/machine_learning/collaborate/gan/data/lsun/preprocessed_toy/0000.hkl'
-datapath='/eecs/research/asr/chris/DG_project/dataset/lsun/preprocessed_toy_100/'
-# datapath='../data/lsun/'
+# datapath='/eecs/research/asr/chris/DG_project/dataset/lsun/preprocessed_toy_100/'
+datapath = '/local/scratch/chris/church/preprocessed_toy_100/'
 
 if not os.path.exists(os.path.dirname(os.path.realpath(__file__)) + "/figs/"):
     os.makedirs(os.path.dirname(os.path.realpath(__file__)) + "/figs/")
@@ -178,7 +179,7 @@ def main(opt_params, ganI_params, train_params, conv_params):
                                 = set_up_train(ganI, opt_params)
 
     #TODO: If you want to train your own model, comment out below section and set the model parameters below accordingly
-    ###################################################################################################
+    ##################################################################################################
     num_samples=100
     fname='./figs/lsun/gran_lsun_samples500.pdf'
     samples = get_samples(num_samples).reshape((num_samples, 3*64*64))
@@ -214,9 +215,9 @@ momentum    = 0.0 #Not Used
 lam1        = 0.000001 
 
 ### TRAIN PARAMS
-num_epoch   = 10
+num_epoch   = 15
 epoch_start = 0 
-contF       = True #continue flag. usually FIXED
+contF       = False #continue flag. usually FIXED
 N=1000 
 Nv=N 
 Nt=N #Dummy variable

@@ -73,9 +73,9 @@ class convnet64():
         return y
 
 
-    def cost(self, X, y):
-        p_y_x = self.propagate(X)
-        return -T.mean(T.log(p_y_x)[T.arange(y.shape[0]), y])
+#     def cost(self, X, y):
+        # p_y_x = self.propagate(X)
+        # return -T.mean(T.log(p_y_x)[T.arange(y.shape[0]), y])
    
    
     def weight_decay_l2(self):
