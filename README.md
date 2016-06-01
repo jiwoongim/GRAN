@@ -71,4 +71,7 @@ Here are some LSUN Church samples generated from GRAN:
 
 ![Image of lsun](https://github.com/jiwoongim/GRAN/blob/master/figs/lsun/lsun_ts5.jpg)
 
+Here are some Mix of LSUN Living Room and Kitchen dataset generated from GRAN:
+
+![Image of lsun](https://github.com/jiwoongim/GRAN/blob/master/figs/lsun/lsun_mix_ts3.jpg)
 
