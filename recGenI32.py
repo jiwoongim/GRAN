@@ -110,18 +110,19 @@ class RecGenI32(object):
         return self.L0b.propagate(H2, testF=testF, atype='tanh')
 
 
-    def get_samples(self, num_sam, scanF=True):
+    def get_samples(self, num_sam, scanF=True, num_steps=None):
         """
         Retrieves the samples for the current time step. 
         uncomment parts when time step changes.
         """
         print 'Get_sample func: Number of steps iterate over ::: %d' % self.num_steps
+        if num_steps is None : num_steps = self.num_steps
 
         H_Ct    = T.alloc(0., num_sam, self.dim_sample)
         #Z       = MRG.normal(size=(num_sam, self.dim_sample), avg=0., std=1.)
         Zs      = MRG.normal(size=(self.num_steps, num_sam, self.dim_sample), avg=0., std=1.)
 
-        Canvases = self.apply_recurrence(self.num_steps, Zs, H_Ct)
+        Canvases = self.apply_recurrence(num_steps, Zs, H_Ct)
         C = T.sum(T.stacklists(Canvases),axis=0)
         return activation_fn_th(C, atype='sigmoid'), Canvases
 

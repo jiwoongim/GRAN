@@ -31,11 +31,11 @@ import matplotlib.pyplot as plt
 from optimize_gan import *
 from gran import *
 from utils import * 
+from util_cifar10 import *
 
-
-datapath='/data/lisa/data/cifar10/cifar-10-batches-py/'
+#datapath='/data/lisa/data/cifar10/cifar-10-batches-py/'
 #datapath='/eecs/research/asr/chris/DG_project/dataset/cifar-10-batches-py/'
-
+datapath='/home/daniel/Documents/data/cifar10/cifar-10-batches-py/'
 
 ''' Battle between two models M1 and M2'''
 def battle(model1, model2, test_data, num_sam=1000, D=32, num_channel=3):
@@ -76,5 +76,34 @@ def load_model(fname):
     model = unpickle(os.path.dirname(os.path.realpath(__file__)) + '/params/'+fname)
     return model
 
+
+num_sam=1000
+if __name__ == '__main__':
+
+    train_set, valid_set, test_set = load_cifar10(path=datapath)
+    train_set[0] = train_set[0] / 255.
+    valid_set[0] = valid_set[0] / 255.
+    test_set[0]  = test_set[0]  / 255.
+    test_set = [test_set[0][:num_sam,:], test_set[1][:num_sam]]
+    N ,D = train_set[0].shape; Nv,D = valid_set[0].shape; Nt,D = test_set[0].shape
+    print("test_set[1].shape: ", test_set[1].shape)
+    print(test_set[1])
+    test_set  = shared_dataset(test_set )
+
+    #fname1 = 'dcgan_param_cifar10_2.save'
+    fname1 = 'gran_param_cifar10_ts5_3.save'
+    fname2 = 'gran_param_cifar10_ts7_2.save'
+    #fname2 = 'recgan_gran_param_cifar10_ts5.save5.save'
+    fname3 = 'gran_param_cifar10_ts9_2.save'
+    model1 = load_model(fname1)
+    model2 = load_model(fname2)
+    model3 = load_model(fname3)
+
+    print 'gran5 vs gran7'
+    battle(model1,model2, test_set[0], Nt) 
+    print 'gran5 vs gran9'
+    battle(model1,model3, test_set[0], Nt) 
+    print 'gran7 vs gran9'
+    battle(model2,model3, test_set[0], Nt) 
 
 

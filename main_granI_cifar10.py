@@ -34,10 +34,12 @@ from gran import *
 from utils import * 
 from util_cifar10 import *
 
-datapath='/groups/branson/home/imd/Documents/machine_learning_uofg/data/cifar10/cifar-10-batches-py/'
+#datapath='/groups/branson/home/imd/Documents/machine_learning_uofg/data/cifar10/cifar-10-batches-py/'
 #datapath='/export/mlrg/imj/machine_learning/data/cifar10/cifar-10-batches-py/'
 #datapath='/data/lisa/data/cifar10/cifar-10-batches-py/'
 #datapath='/eecs/research/asr/chris/DG_project/dataset/cifar-10-batches-py/'
+#datapath='/home/imj/data/cifair10/cifar-10-batches-py/'
+datapath='/home/daniel/Documents/data/cifar10/cifar-10-batches-py/'
 
 if not os.path.exists(os.path.dirname(os.path.realpath(__file__)) + "/figs/"):
     os.makedirs(os.path.dirname(os.path.realpath(__file__)) + "/figs/")
@@ -98,14 +100,14 @@ def lets_train(model, train_params, num_batchs, theano_fns, opt_params, model_pa
 
             num_samples=100
             samples = get_samples(num_samples).reshape((num_samples, 32*32*3))
-            display_images(np.asarray(samples * 255, dtype='int32'), (10,10), fname='./figs/cifar10/granI_samples_'+str(epoch) +"_"+ str(K))
+            display_images(np.asarray(samples * 255, dtype='int32'), (10,10), fname='./figs/cifar10/granI_samples_'+str(epoch) +"_"+ 'ns'+str(num_steps))
 
             # change the name to save to when new model is found.
             save_the_weight(model, './params/'+ model_param_save )
             
     num_samples=100
     samples = get_samples(num_samples).reshape((num_samples, 3*32*32))
-    display_images(np.asarray(samples * 255, dtype='int32'), (10,10), fname='./figs/cifar10/gran_samples_'+ '_'+ findex + str(K))
+    display_images(np.asarray(samples * 255, dtype='int32'), (10,10), fname='./figs/cifar10/gran_samples_'+ '_'+ findex + 'ns'+str(num_steps))
 
     return model
 
@@ -174,7 +176,7 @@ filter_sz   = 4 #FIXED
 nkerns      = [8,4,2,1]
 ckern       = 128
 num_hid1    = nkerns[0]*ckern*filter_sz*filter_sz # FIXED.
-num_steps   = 3     # time steps
+num_steps   = 5     # time steps
 num_z       = 100   #/ num_steps # To match random noise of GAN's. 
 
 ### OPT PARAMS

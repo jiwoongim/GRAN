@@ -168,7 +168,7 @@ class Optimize():
     def get_samples(self, model):
 
         num_sam = T.iscalar('i'); 
-        return theano.function([num_sam], model.get_samples(num_sam))
+        return theano.function([num_sam], model.get_samples(num_sam, num_steps=9))
 
 
     def get_seq_drawing(self, model):

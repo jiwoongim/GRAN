@@ -89,11 +89,13 @@ class GRAN():
         return T.stacklists(sequential_sams)
 
  
-    def get_samples(self, num_sam):
+    def get_samples(self, num_sam, num_steps=None):
         """Fetches the generated samples"""
 
+        if num_steps is None : num_steps = self.num_steps
+
         #Returns tensor (num_sam, 3, D, D)
-        return self.gen_network.get_samples(num_sam)[0]
+        return self.gen_network.get_samples(num_sam, num_steps=num_steps)[0]
 
 
 
